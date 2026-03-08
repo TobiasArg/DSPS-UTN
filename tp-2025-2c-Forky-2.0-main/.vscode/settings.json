@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "log.h": "c",
+        "error.h": "c",
+        "configuration.h": "c",
+        "memory.h": "c",
+        "parameters.h": "c",
+        "include.h": "c",
+        "metadata.h": "c",
+        "string.h": "c",
+        "connections.h": "c",
+        "sockets.h": "c",
+        "logger.h": "c",
+        "stdlib.h": "c",
+        "main.h": "c",
+        "protocol.h": "c",
+        "instructions.h": "c"
+    }
+}

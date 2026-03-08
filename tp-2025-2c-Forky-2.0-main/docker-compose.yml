@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  machine-utn:
+    build: .
+    container_name: machine-utn
+    volumes:
+      - ./:/app
+    tty: true

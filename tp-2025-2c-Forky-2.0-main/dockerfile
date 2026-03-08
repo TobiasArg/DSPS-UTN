@@ -1,0 +1,31 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    cmake \
+    wget \
+    unzip \
+    curl \
+    ca-certificates && \
+    update-ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY utils/ ./utils/
+COPY master/ ./master/
+COPY query_control/ ./query_control/
+COPY worker/ ./worker/
+COPY storage/ ./storage/
+
+RUN git clone --depth 1 https://github.com/sisoputnfrba/so-commons-library.git ./commons
+RUN cd commons && make install
+RUN cd utils && make
+RUN cd master && make
+RUN cd query_control && make
+RUN cd worker && make
+RUN cd storage && make
