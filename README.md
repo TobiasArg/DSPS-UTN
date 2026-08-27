@@ -396,37 +396,7 @@ The system is academically/functionally focused, with **non-hardened** transport
 
 ---
 
-## 12. Target state (ideal) vs implemented state
-
-| Area | Ideal target state | Observed state |
-|---|---|---|
-| FIFO Scheduling | deterministic, no preemption | implemented |
-| Priority Scheduling | priority-based selection + stable preemption | implemented with ongoing evolution in timeout/ack branches |
-| Aging | configurable anti-starvation | implemented when `TIEMPO_AGING > 0` |
-| Resilience | inconsistency self-healing | watchdog operational, full recovery still incremental |
-| Error propagation | E2E and query_id-traceable | implemented and tested via dedicated scripts |
-| Security | authentication + encryption + hardening | functional baseline without strong hardening |
-
----
-
-## 13. Technical risks and prioritized debt
-
-### Highest-impact risks
-
-1. race conditions under high contention between scheduler, handlers, and connection monitoring.
-2. absence of orderly shutdown for full resource cleanup.
-3. minimal network security (academic environment, not internet-exposed production).
-
-### Prioritized technical debt
-
-1. definitively unify preemption/ACK/timeout strategy into one flow.
-2. formalize explicit query cancellation on Query Control disconnection.
-3. externalize watchdog parameters (interval/timeout) to configuration.
-4. broaden extreme-concurrency and intermittent-network-failure tests.
-
----
-
-## 14. Academic conclusion
+## 12. Academic conclusion
 
 The system represents a **solid integrative case** for Information Systems Engineering (UTN), combining distributed design, process scheduling, multithread synchronization, and operational control. Within the ecosystem, `MASTER` has a central and high-complexity role: it sustains the execution model, applies fairness policies, coordinates partial fault tolerance, and materializes the service contract toward the user.
 
@@ -434,7 +404,7 @@ From a technical-product synthesis standpoint, the project demonstrates advanced
 
 ---
 
-## 15. Short glossary
+## 13. Short glossary
 - **Query Session**: lifecycle context of a query.
 - **Scheduler**: assignment planning component.
 - **Dispatch**: effective sending of query to worker.
